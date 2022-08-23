@@ -1,6 +1,6 @@
 import React from "react";
 
-function GameDetails({ game, favorites, setFavorites }) {
+function GameDetails({ game, favorites, handleFavorites }) {
   const boardStyleList = [
     "blue",
     "brown",
@@ -10,6 +10,10 @@ function GameDetails({ game, favorites, setFavorites }) {
     "wood-dark2",
     "white-grey",
   ];
+
+  const tog = favorites.find((c) => {
+    return c.id === game.id;
+  });
 
   const boardRand = Math.floor(Math.random() * boardStyleList.length - 1);
 
@@ -31,10 +35,13 @@ function GameDetails({ game, favorites, setFavorites }) {
       </ct-pgn-viewer>
       <div className="pl-3">
         <button
+          onClick={(e) => {
+            handleFavorites(game, e);
+          }}
           type="button"
           class="text-white bg-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         >
-          Favorite Game
+          {tog ? "Unfavorite" : "Favorite"}
         </button>
       </div>
     </div>

@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 function Board({
   game,
-  detailGame,
-  setDetailGame,
-  handleFavorites,
   favorites,
+  detailGame,
+  handleFavorites,
+  setDetailGame,
 }) {
   const boardStyleList = [
     "blue",
